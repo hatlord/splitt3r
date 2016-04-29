@@ -16,7 +16,7 @@ def arguments
     opt :emails, "Email List for Appendix B", :type => String
 
     if ARGV.empty?
-      puts "Need Help? Try ./rsdns --help or -h"
+      puts "Need Help? Try ./splitt3r --help or -h"
       exit
     end
   end

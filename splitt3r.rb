@@ -14,6 +14,7 @@ def arguments
     opt :social, "List of e-mail addresses for AppendixD", :type => String
     opt :meta, "Metadata List for Appendix C", :type => String
     opt :emails, "Email List for Appendix B", :type => String
+    opt :scope, "Submitted Scope Section", :type => String
 
     if ARGV.empty?
       puts "Need Help? Try ./splitt3r --help or -h"
@@ -21,6 +22,18 @@ def arguments
     end
   end
   opts
+end
+
+
+def scope(arg)
+  if arg[:scope]
+    puts "SUBMITTED SCOPE"
+    scope = File.readlines(arg[:scope]).map(&:chomp)
+      split = scope.each_slice(8).to_a
+      split.each do |s|
+        puts "#{s[0]}\t#{s[1]}\t#{s[2]}\t#{s[3]}\t#{s[4]}\t#{s[5]}\t#{s[6]}\t#{s[7]}"
+    end
+  end
 end
 
 def vulntotals(arg)
@@ -54,7 +67,7 @@ def metadata(arg)
     meta = File.readlines(arg[:meta]).map(&:chomp)
     splitter = meta.each_slice(4).to_a
     splitter.each do |split|
-      puts "#{split[0]}\t\t#{split[1]}\t\t#{split[2]}\t\t#{split[3]}"
+      puts "#{split[0]}\t#{split[1]}\t#{split[2]}\t#{split[3]}".chomp
     end
   end
 end
@@ -71,6 +84,7 @@ def emails(arg)
 end
 
 arg = arguments
+scope(arg)
 vulntotals(arg)
 socialnetwork(arg)
 metadata(arg)

@@ -56,7 +56,7 @@ def socialnetwork(arg)
     social = File.readlines(arg[:social]).map(&:chomp)
     splitter = social.each_slice(4).to_a
     splitter.each do |split|
-      puts "#{split[0]}\t\t#{split[1]}\t\t#{split[2]}\t\t#{split[3]}"
+      puts "#{split[0]}\t#{split[1]}\t#{split[2]}\t#{split[3]}"
     end
   end
 end
@@ -67,7 +67,7 @@ def metadata(arg)
     meta = File.readlines(arg[:meta]).map(&:chomp)
     splitter = meta.each_slice(4).to_a
     splitter.each do |split|
-      puts "#{split[0]}\t\t#{split[1]}\t\t#{split[2]}\t\t#{split[3]}"
+      puts "#{split[0]}\t#{split[1]}\t#{split[2]}\t#{split[3]}"
     end
   end
 end

@@ -15,6 +15,7 @@ def arguments
     opt :meta, "Metadata List for Appendix C", :type => String
     opt :emails, "Email List for Appendix B", :type => String
     opt :scope, "Submitted Scope Section", :type => String
+    opt :eight, "Eight columns", :type => String
 
     if ARGV.empty?
       puts "Need Help? Try ./splitt3r --help or -h"
@@ -83,9 +84,21 @@ def emails(arg)
   end
 end
 
+def eight(arg)
+  if arg[:eight]
+    puts "\nEight Columns"
+      stuff = File.readlines(arg[:eight]).map(&:chomp)
+      splitter = stuff.each_slice(8).to_a
+      splitter.each do |split|
+        puts "#{split[0]}\t#{split[1]}\t#{split[2]}\t#{split[3]}\t#{split[4]}\t#{split[5]}\t#{split[6]}\t#{split[7]}"
+    end
+  end
+end
+
 arg = arguments
 scope(arg)
 vulntotals(arg)
 socialnetwork(arg)
 metadata(arg)
 emails(arg)
+eight(arg)

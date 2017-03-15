@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 #splitt3r takes an list of data as input, and outputs CSV with a column count of your choosing
-
+#Example1: ./splitt3r.rb --columns 8 –data /path/to/listofips.txt
+#Example2: ./splitt3r.rb --columns 8 –data /path/to/listofips.txt --uniq (Removes duplicates from your list)
 require 'trollop'
 require 'csv'
 
